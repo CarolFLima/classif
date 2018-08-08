@@ -7,5 +7,5 @@ dataframe['item.desc'] = dataframe['item.desc'].str.replace('-', ' ')
 dataframe['item.desc'] = dataframe['item.desc'].str.replace('[^ a-zA-Z]', '')
 dataframe['item.desc'] = dataframe['item.desc'].str.replace(' +', ' ')
 dataframe['item.desc'] = dataframe['item.desc'].str.lower()
-df1 = dataframe['item.desc']
-df1.to_csv('data/difal.csv')
+dataframe.drop(dataframe.columns.difference(['item.desc']), 1, inplace=True)
+dataframe.to_csv('data/difal.csv')
