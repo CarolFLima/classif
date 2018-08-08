@@ -1,7 +1,9 @@
+# coding=utf-8
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF, LatentDirichletAllocation
 
+f = open("resultados.txt", "w")
 def display_topics(model, feature_names, no_top_words):
     for topic_idx, topic in enumerate(model.components_):
         print("Topic %d:" % (topic_idx))
@@ -39,8 +41,7 @@ no_topics = 100
 lda = LatentDirichletAllocation(n_topics=no_topics, max_iter=5,
                                 learning_method='online', learning_offset=50.,random_state=0).fit(tf)
 
-f = open("resultados.txt", "w")
 
-no_top_words = 10
+no_top_words =10
 #display_topics(nmf, tfidf_feature_names, no_top_words)
 display_topics(lda, tf_feature_names, no_top_words)
